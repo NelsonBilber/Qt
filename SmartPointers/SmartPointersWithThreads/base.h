@@ -27,7 +27,8 @@ public slots:
 
 private:
 
-    QSharedPointer<NestedClass> nested_;
+    //QSharedPointer<NestedClass> nested_;
+    QScopedPointer<NestedClass> nested_;
     QThread* thread_;
 
 signals:

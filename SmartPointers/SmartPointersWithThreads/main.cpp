@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 
     QList<Base*> lst;
 
-    for(int i = 0; i < 5; i++) {
+    for(int i = 0; i < 10; i++) {
         Base * base = new Base(0);
         lst.append(base);
     }

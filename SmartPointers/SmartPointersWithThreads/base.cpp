@@ -7,10 +7,11 @@
 
 using namespace std;
 
-Base::Base(QObject *parent) : QObject(parent)
+Base::Base(QObject *parent) : QObject(parent),
+    nested_ (new NestedClass(this)/*, doDeleteLater*/)
 {
     cout << "Base ()" << endl;
-    nested_ = QSharedPointer<NestedClass> (new NestedClass(this)/*, doDeleteLater*/);
+    //nested_ = QSharedPointer<NestedClass> (new NestedClass(this)/*, doDeleteLater*/);
     thread_ = new QThread;
 }
 
@@ -52,7 +53,8 @@ void Base::fall()
 void Base::reset()
 {
     cout << "--> reset" << endl;
-    nested_.clear();
+    //nested_.clear(); //sharedpointer
+    nested_.reset();   //scopedpointer
     cout << "--> end reset()" << endl;
 }
 
